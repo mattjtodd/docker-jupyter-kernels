@@ -13,3 +13,9 @@ services:
     volumes:
       - $PWD/dags:/home/jovyan/airflow/dags
       - $PWD/books:/home/jovyan/books
+
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: password
