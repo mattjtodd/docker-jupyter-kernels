@@ -1,9 +1,18 @@
 version: '3.4'
 
 services:
+  db:
+    image: mysql
+    build: ./mysql
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+
   notebook:
     image: mattjtodd/docker-airflow
-    build: ./
+    links:
+     - db
+    build: ./airflow
     environment:
       - JUPYTER_ENABLE_LAB=yes
     ports:
@@ -13,9 +22,4 @@ services:
     volumes:
       - $PWD/dags:/home/jovyan/airflow/dags
       - $PWD/books:/home/jovyan/books
-
-  db:
-    image: mysql
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_ROOT_PASSWORD: password
+      - $PWD/telemetry-logs:/home/jovyan/telemetry-logs
