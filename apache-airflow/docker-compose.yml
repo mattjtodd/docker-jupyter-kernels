@@ -10,8 +10,6 @@ services:
 
   notebook:
     image: mattjtodd/docker-airflow
-    links:
-     - db
     build: ./airflow
     environment:
       - JUPYTER_ENABLE_LAB=yes
