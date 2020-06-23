@@ -2,7 +2,6 @@ version: '3.4'
 
 services:
   notebook:
-    build: .
     image: mattjtodd/docker-jupyter-jdk:11
     build: ./
     environment:
