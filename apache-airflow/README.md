@@ -16,6 +16,7 @@ There are two folders which contain the files as follows
 
 * `/books` - the notebooks which contain the commands.
 * `/dags` - the dag definitons for Airflow
+* `/telemetry-logs` - place to put csv files to be processed
 
 
 These will be mounted in the container in the appropriate places for Airflow and Jupyter to pick them up.
